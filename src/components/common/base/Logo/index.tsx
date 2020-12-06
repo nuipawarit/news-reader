@@ -1,17 +1,26 @@
 import React, { FC } from 'react';
 
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
-
-const Img = styled('img')`
-  width: auto;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-`;
+const useStyles = makeStyles({
+  logo: {
+    width: 'auto',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '50%',
+  },
+});
 
 const Logo: FC = () => {
-  return <Img alt="logo" src="https://via.placeholder.com/120" />;
+  const classes = useStyles();
+
+  return (
+    <img
+      alt="logo"
+      className={classes.logo}
+      src="https://via.placeholder.com/120"
+    />
+  );
 };
 
 export default Logo;
