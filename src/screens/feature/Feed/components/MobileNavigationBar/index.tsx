@@ -7,14 +7,28 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
+import { Theme, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import Logo from 'components/common/base/Logo';
 
+const useStyles = makeStyles((theme: Theme) => ({
+  mobileNavigationBar: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+  },
+  toolbar: {
+    paddingLeft: '15px',
+    paddingRight: '15px',
+  },
+}));
+
 const MobileNavigationBar: FC = () => {
+  const classes = useStyles();
+
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar className={classes.mobileNavigationBar} position="static">
+      <Toolbar className={classes.toolbar}>
         <Box height="50px" ml="3px">
           <Logo />
         </Box>
