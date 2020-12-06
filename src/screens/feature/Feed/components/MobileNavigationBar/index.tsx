@@ -13,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Logo from 'components/common/base/Logo';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  mobileNavigationBar: {
+  root: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
   },
@@ -27,7 +27,7 @@ const MobileNavigationBar: FC = () => {
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.mobileNavigationBar} position="static">
+    <AppBar className={classes.root} position="static">
       <Toolbar className={classes.toolbar}>
         <Box height="50px" ml="3px">
           <Logo />

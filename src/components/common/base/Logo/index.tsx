@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  logo: {
+  root: {
     width: 'auto',
     height: '100%',
     objectFit: 'cover',
@@ -17,7 +17,7 @@ const Logo: FC = () => {
   return (
     <img
       alt="logo"
-      className={classes.logo}
+      className={classes.root}
       src="https://via.placeholder.com/120"
     />
   );

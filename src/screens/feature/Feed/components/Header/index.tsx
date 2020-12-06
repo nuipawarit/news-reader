@@ -12,10 +12,12 @@ const Header: FC = () => {
   return (
     <>
       <Hidden xsDown>
-        <Box height="120px" mr="80px">
-          <Logo />
+        <Box alignItems="center" display="flex">
+          <Box height="120px" mr="80px">
+            <Logo />
+          </Box>
+          <DesktopNavigationBar />
         </Box>
-        <DesktopNavigationBar />
       </Hidden>
       <Hidden smUp>
         <MobileNavigationBar />

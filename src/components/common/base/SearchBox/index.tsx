@@ -7,15 +7,15 @@ import {
   fade,
   makeStyles,
 } from '@material-ui/core/styles';
+import { WithStyles } from '@material-ui/core/styles/withStyles';
 import SearchIcon from '@material-ui/icons/Search';
 
-const useStyles = makeStyles((theme: Theme) =>
+const styles = (theme: Theme) =>
   createStyles({
-    searchBox: {
+    root: {
       position: 'relative',
       padding: '10px',
       width: '100%',
-
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
@@ -33,8 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inputRoot: {
       backgroundColor: theme.palette.common.white,
-      borderRadius: theme.shape.borderRadius,
+      borderRadius: '8px',
       color: 'inherit',
+      height: '100%',
       width: '100%',
     },
     inputInput: {
@@ -42,19 +43,18 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: 'calc(1em + 20px)',
       transition: theme.transitions.create('width'),
       width: '100%',
-
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
     },
-  }),
-);
+  });
 
-const SearchBox: FC = () => {
-  const classes = useStyles();
+type Props = {
+  classes?: Partial<WithStyles<typeof styles>['classes']>;
+};
+
+const SearchBox: FC<Props> = (props) => {
+  const classes = makeStyles(styles)(props);
 
   return (
-    <div className={classes.searchBox}>
+    <div className={classes.root}>
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
