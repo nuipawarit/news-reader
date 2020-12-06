@@ -9,15 +9,13 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import LoadMoreButton from './components/LoadMoreButton';
 
-type Props = {};
-
-const Feed: FC<Props> = () => {
+const Feed: FC = () => {
   return (
     <Document>
       <Head title="Feed" />
       <Body>
-        <Container disableGutters fixed>
-          <Box mb={{ md: '50px' }}>
+        <Container disableGutters maxWidth="lg">
+          <Box m={{ sm: '20px' }} mb={{ sm: '50px' }}>
             <Header />
           </Box>
           <CardContainer />
