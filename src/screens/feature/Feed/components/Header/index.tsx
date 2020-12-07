@@ -4,10 +4,10 @@ import { Box, Hidden } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 
 import Logo from 'components/common/base/Logo';
-import SearchBox from 'components/common/base/SearchBox';
 
 import DesktopNavigationBar from '../DesktopNavigationBar';
 import MobileNavigationBar from '../MobileNavigationBar';
+import SearchBox from '../SearchBox';
 
 const style = createStyles({
   logoRoot: {

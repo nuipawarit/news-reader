@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { Button } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+
+import { NewsContext } from 'state';
 
 const style = (theme: Theme) =>
   createStyles({
@@ -16,12 +18,21 @@ const style = (theme: Theme) =>
     },
   });
 
-type Props = {};
-
-const LoadMoreButton: FC<Props> = () => {
+const LoadMoreButton: FC = () => {
   const classes = makeStyles(style)();
+  const { dispatch = () => {} } = useContext(NewsContext);
 
-  return <Button className={classes.root}>Load More</Button>;
+  const onClickHandler = () => {
+    dispatch({
+      type: 'LOAD_MORE',
+    });
+  };
+
+  return (
+    <Button className={classes.root} onClick={onClickHandler}>
+      Load More
+    </Button>
+  );
 };
 
 export default LoadMoreButton;

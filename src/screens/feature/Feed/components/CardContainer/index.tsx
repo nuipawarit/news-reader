@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
-import { Grid, Hidden, Typography } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
-import { NewsDetail } from 'types/news';
+import { NewsContext } from 'state';
 
 import DesktopCard from '../DesktopCard';
 import MobileCard from '../MobileCard';
@@ -24,14 +24,10 @@ const style = (theme: Theme) =>
     },
   });
 
-type Props = {
-  data?: NewsDetail[];
-};
-
-const CardContainer: FC<Props> = ({ data }) => {
+const CardContainer: FC = () => {
   const classes = makeStyles(style)();
-
-  if (!data) return <Typography>Loading...</Typography>;
+  const { state } = useContext(NewsContext);
+  const { filtered: data } = state.data;
 
   return (
     <Grid classes={{ container: classes.gridContainer }} container>

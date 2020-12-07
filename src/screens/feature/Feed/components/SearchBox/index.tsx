@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC, useContext } from 'react';
 
 import { InputBase } from '@material-ui/core';
 import {
@@ -8,8 +8,11 @@ import {
   makeStyles,
 } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import { debounce } from 'lodash';
 
 import { ClassesProp } from 'types/ui';
+
+import { NewsContext } from '../../../../../state';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -53,6 +56,17 @@ type Props = {
 
 const SearchBox: FC<Props> = (props) => {
   const classes = makeStyles(styles)(props);
+  const { dispatch = () => {} } = useContext(NewsContext);
+
+  const callback = debounce((text: string) => {
+    dispatch({
+      type: 'SEARCH',
+      payload: { text },
+    });
+  }, 200);
+
+  const onInputChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
+    callback(e.target.value);
 
   return (
     <div className={classes.root}>
@@ -60,11 +74,12 @@ const SearchBox: FC<Props> = (props) => {
         <SearchIcon />
       </div>
       <InputBase
-        placeholder="Search"
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
+        placeholder="Search"
+        onChange={onInputChangeHandler}
       />
     </div>
   );
