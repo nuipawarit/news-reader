@@ -1,9 +1,17 @@
 import React, { FC } from 'react';
 
-type Props = {};
+import { Paper } from '@material-ui/core';
 
-const Card: FC<Props> = () => {
-  return <div />;
+import { NewsDetail } from 'types/news';
+
+type Props = {
+  data: NewsDetail;
+};
+
+const Card: FC<Props> = ({ data }) => {
+  const { topic } = data;
+
+  return <Paper>{topic}</Paper>;
 };
 
 export default Card;
