@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Hidden } from '@material-ui/core';
 
 import { Body, Document, Head } from 'components/common/base/Page';
 import MOCKS from 'mocks';
@@ -27,9 +27,11 @@ const Feed: FC = () => {
           <Box m={{ sm: '20px' }} my={{ xs: '10px' }} mx={{ xs: '5px' }}>
             <LoadMoreButton />
           </Box>
-          <Box mt={{ sm: '75px' }}>
-            <Footer />
-          </Box>
+          <Hidden xsDown>
+            <Box mt={{ sm: '75px' }}>
+              <Footer />
+            </Box>
+          </Hidden>
         </Container>
       </Body>
     </Document>
