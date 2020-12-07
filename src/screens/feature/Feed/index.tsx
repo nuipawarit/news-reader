@@ -24,8 +24,12 @@ const Feed: FC = () => {
           <Box m={{ sm: '20px' }}>
             <CardContainer data={news} />
           </Box>
-          <LoadMoreButton />
-          <Footer />
+          <Box m={{ sm: '20px' }} my={{ xs: '10px' }} mx={{ xs: '5px' }}>
+            <LoadMoreButton />
+          </Box>
+          <Box mt={{ sm: '75px' }}>
+            <Footer />
+          </Box>
         </Container>
       </Body>
     </Document>
