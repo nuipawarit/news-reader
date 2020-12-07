@@ -1,5 +1,6 @@
-import data from './data';
+import data, { generator } from './data';
 
 export default {
   data,
+  generator,
 };
