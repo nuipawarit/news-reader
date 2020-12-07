@@ -7,8 +7,9 @@ import {
   fade,
   makeStyles,
 } from '@material-ui/core/styles';
-import { WithStyles } from '@material-ui/core/styles/withStyles';
 import SearchIcon from '@material-ui/icons/Search';
+
+import { ClassesProp } from 'types/ui';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -47,7 +48,7 @@ const styles = (theme: Theme) =>
   });
 
 type Props = {
-  classes?: Partial<WithStyles<typeof styles>['classes']>;
+  classes?: ClassesProp<typeof styles>;
 };
 
 const SearchBox: FC<Props> = (props) => {

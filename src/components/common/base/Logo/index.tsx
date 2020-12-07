@@ -1,18 +1,24 @@
 import React, { FC } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+import { ClassesProp } from 'types/ui';
+
+const styles = createStyles({
   root: {
     width: 'auto',
-    height: '100%',
+    maxHeight: '100%',
     objectFit: 'cover',
     borderRadius: '50%',
   },
 });
 
-const Logo: FC = () => {
-  const classes = useStyles();
+type Props = {
+  classes?: ClassesProp<typeof styles>;
+};
+
+const Logo: FC<Props> = (props) => {
+  const classes = makeStyles(styles)(props);
 
   return (
     <img
