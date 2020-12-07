@@ -3,10 +3,16 @@ import { Dispatch, createContext } from 'react';
 import MOCKS from 'mocks';
 import { NewsDetail } from 'types/news';
 
-const filter = (data: NewsDetail[], text: string) =>
-  data.filter(
-    (item) => item.topic.includes(text) || item.content.includes(text),
-  );
+const filter = (data: NewsDetail[], text: string) => {
+  const lowerText = text.toLowerCase();
+
+  return data.filter((item) => {
+    return (
+      item.topic.toLowerCase().includes(lowerText) ||
+      item.content.toLowerCase().includes(lowerText)
+    );
+  });
+};
 
 export const initialState = {
   criteria: {
@@ -34,12 +40,14 @@ export const NewsContext = createContext<{
 export const reducer = (state: NewsState, action: NewsAction) => {
   switch (action.type) {
     case 'SEARCH': {
-      const { text } = state.criteria;
+      const text = action.payload?.text || '';
       const { raw } = state.data;
       const filtered = filter(raw, text);
 
       return {
-        ...state,
+        criteria: {
+          text,
+        },
         data: {
           ...state.data,
           filtered,
